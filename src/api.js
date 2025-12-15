@@ -61,6 +61,7 @@ export default {
             folder3: null,
             folder4: null,
             folder5: null,
+            lastFolder: null,
         };
 
         let parent = null;
@@ -77,6 +78,7 @@ export default {
             if (!id) throw new Error(`ensure-folders: failed to create or find ${key} (${name})`);
 
             result[key] = id;
+            result.lastFolder = id;
             parent = id;
             logger?.info?.(`ensure-folders: set ${key}=${id}`);
         }

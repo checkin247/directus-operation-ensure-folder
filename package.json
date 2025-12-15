@@ -1,8 +1,11 @@
 {
-	"name": "ensure-folders",
+	"name": "directus-extension-ensure-folders",
 	"description": "Please enter a description for your extension",
+    "author": "thomas@hotelplatform.io",
+    "homepage": "hotelplatform.io",
+    "license": "Apache-2.0",
 	"icon": "extension",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"keywords": [
 		"directus",
 		"directus-extension",
