@@ -1,6 +1,6 @@
 {
 	"name": "directus-extension-ensure-folders",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Create folders for the directus files system in hirarchy. Use this directus operation extension in a directus flow to ensure that the folder hirarchy exist.",
 	"keywords": [
 		"directus",
