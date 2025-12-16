@@ -1,12 +1,11 @@
-# ensure-folders
+# Ensure Folders
 
 Directus Flow Operation: Ensure Folders
 
-A small Directus operation extension that idempotently ensures a hierarchy of up to 5 nested folders (folder1..folder5) in the Directus `folders` collection. It will reuse existing folders found by name (scoped by parent) or create them if missing, threading the parent folder id through each level.
+A small Directus operation extension that idempotently ensures a hierarchy of up to 5 nested folders (folder1..folder5) in the Directus `folders` collection. It will reuse existing folders found by name (scoped by parent) or create them if missing, threading the parent folder id through each level.  
 
-Location
-- data/directus/extensions/ensure-folders/src/api.js
-- data/directus/extensions/ensure-folders/src/app.js
+![options.jpg](https://raw.githubusercontent.com/checkin247/directus-extension-ensure-folder/main/docs/images/options.jpg)
+
 
 Behavior / contract
 - Inputs (options):
@@ -38,7 +37,7 @@ Response shape (example)
 ```
 - `lastFolder` equals the id of the deepest created/found folder (the last non-empty folder). If only `folder1` is supplied, `lastFolder` equals `folder1`'s id.
 
-Usage (Directus Flow Operation)
+## Usage (Directus Flow Operation)
 - Add the `ensure-folders` operation to a Flow.
 - Provide `folder1` (required) and optionally `folder2`..`folder5`.
 - The operation returns the object (above) which can be used by downstream operations.
@@ -52,12 +51,12 @@ Example payload (when invoking via API or testing in the Flow UI)
 }
 ```
 
-Development / installation
-1. Place this extension in `data/directus/extensions/ensure-folders` (build result of this repo).
+## Development / installation
+1. Place this extension in `/directus/extensions/ensure-folders` (build result of this repo).
 2. Restart Directus so it discovers the extension.
 3. Use the Flow builder to add the `ensure-folders` operation.
 
-License & Contributing
+## License & Contributing
 Any use of this plugin in a commercial or public product must visibly mention the original author and repository.
 Apache 2.0 License.
 
