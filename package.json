@@ -1,20 +1,40 @@
 {
 	"name": "directus-extension-ensure-folders",
-	"description": "Please enter a description for your extension",
-    "author": "thomas@hotelplatform.io",
-    "homepage": "hotelplatform.io",
-    "license": "Apache-2.0",
-	"icon": "extension",
 	"version": "1.0.1",
+	"description": "Create folders for the directus files system in hirarchy. Use this directus operation extension in a directus flow to ensure that the folder hirarchy exist.",
 	"keywords": [
 		"directus",
 		"directus-extension",
 		"directus-extension-operation"
 	],
+	"homepage": "http://hotelplatform.io",
+	"bugs": {
+		"url": "https://github.com/checkin247/directus-extension-ensure-folder/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/checkin247/directus-extension-ensure-folder.git"
+	},
+	"license": "Apache-2.0",
+	"author": "thomas@hotelplatform.io",
 	"type": "module",
+	"main": "dist/api.js",
 	"files": [
 		"dist"
 	],
+	"scripts": {
+		"build": "directus-extension build",
+		"dev": "directus-extension build -w --no-minify",
+		"link": "directus-extension link",
+		"validate": "directus-extension validate"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"@directus/extensions-sdk": "17.0.4",
+		"vue": "^3.5.25"
+	},
+	"icon": "extension",
 	"directus:extension": {
 		"type": "operation",
 		"path": {
@@ -26,15 +46,5 @@
 			"api": "src/api.js"
 		},
 		"host": "^10.10.0"
-	},
-	"scripts": {
-		"build": "directus-extension build",
-		"dev": "directus-extension build -w --no-minify",
-		"link": "directus-extension link",
-		"validate": "directus-extension validate"
-	},
-	"devDependencies": {
-		"@directus/extensions-sdk": "17.0.4",
-		"vue": "^3.5.25"
 	}
 }
