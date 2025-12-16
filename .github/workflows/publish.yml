@@ -58,23 +58,20 @@ jobs:
         run: |
           set -e
           echo "Preparing npm auth..."
-          # Ensure npm is recent enough to support oidc login
-          npm i -g npm@9.8.1
+          # Upgrade npm to version that supports OIDC (10.x+)
+          npm install -g npm@latest
+          npm -v
 
-          if [ -z "$NPM_TOKEN" ]; then
-            echo "No NPM_TOKEN secret provided — attempting OIDC login (requires Trusted Publishing setup on npm)"
-            if npm login --registry=https://registry.npmjs.org/ --auth-type=oidc; then
-              echo "OIDC login succeeded"
-            else
-              echo "OIDC login failed. Ensure you've configured Trusted Publishing in the package settings on npmjs.com or provide NPM_TOKEN as a secret."
-              exit 1
-            fi
-          else
+          if [ -n "$NPM_TOKEN" ]; then
             echo "Using provided NPM_TOKEN secret for authentication"
             npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+          else
+            echo "No NPM_TOKEN secret provided — will use OIDC (Trusted Publishing)"
+            echo "Ensure Trusted Publishing is configured on npmjs.com for this repository"
           fi
 
       - name: Publish to NPM
         run: |
           echo "Publishing to npm..."
-          npm publish --access public --registry=https://registry.npmjs.org
+          # Use --provenance flag for OIDC-based publishing (requires id-token permission)
+          npm publish --provenance --access public
